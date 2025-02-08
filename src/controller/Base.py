@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 from abc import ABC
 
 if TYPE_CHECKING:
-    from src.view.base import BaseView
-    from src.model.data_model import DataModel
+    from src.view.Base import BaseView
+    from src.model.DataModel import DataModel
 
 
 class BaseController(ABC):

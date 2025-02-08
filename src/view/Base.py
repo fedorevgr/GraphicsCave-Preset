@@ -4,7 +4,7 @@ from abc import ABC
 from PySide6.QtWidgets import QWidget
 
 if TYPE_CHECKING:
-    from src.controller.base import BaseController
+    from src.controller.Base import BaseController
 
 
 class UI(Protocol):
@@ -22,5 +22,5 @@ class BaseView(ABC):
         self.ui = ui
         self.ui.setupUi(self.widget)
 
-    def set_controller(self, controller: 'BaseController') -> None:
+    def setController(self, controller: 'BaseController') -> None:
         self.controller = controller

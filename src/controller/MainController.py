@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-from src.controller.base import BaseController
-from src.model.data_model import DataModel
+from src.controller.Base import BaseController
+from src.model.DataModel import DataModel
 
 if TYPE_CHECKING:
-    from src.view.main_window import MainWindowView
+    from src.view.MainWindow import MainWindowView
 
 
 class MainController(BaseController):

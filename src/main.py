@@ -1,7 +1,7 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
-from src.view.main_window import MainWindowView
+from src.view.MainWindow import MainWindowView
 
 
 def main() -> None:
