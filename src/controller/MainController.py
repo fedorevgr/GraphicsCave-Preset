@@ -13,3 +13,16 @@ class MainController(BaseController):
 
     def __init__(self, view: 'MainWindowView') -> None:
         super().__init__(view, DataModel())
+
+    def render(self) -> None:
+        ...
+
+    def clear(self) -> None:
+        ...
+
+    def unloadImage(self) -> None:
+        ...
+
+    def loadImage(self) -> None:
+        ...
+

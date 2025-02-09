@@ -5,14 +5,14 @@ class UiMainWindow(object):
     _WINDOW_START_SIZE = (1200, 800)
     _RESIZEABLE = False
 
+    mainWidget: QWidget
+    graphicsView: QGraphicsView
+    _buttonSpace: QWidget
+    _buttons: dict[str: QPushButton]
+
     def __init__(self):
         super().__init__()
-
-        self.mainWidget = None
-        self.graphicsView = None
-        self.buttonSpace = None
-        self.button1 = None
-        self.button2 = None
+        self._buttons = {}
 
     def setupUi(self, widget: QMainWindow) -> None:
         widget.resize(self._WINDOW_START_SIZE[0], self._WINDOW_START_SIZE[1])
@@ -23,18 +23,20 @@ class UiMainWindow(object):
         self.graphicsView = QGraphicsView(centralWidget)
         verticalLayout.addWidget(self.graphicsView)
 
-        self.buttonSpace = QWidget(centralWidget)
-        verticalLayout.addWidget(self.buttonSpace)
+        self._buttonSpace = QWidget(centralWidget)
+        verticalLayout.addWidget(self._buttonSpace)
 
-        horizontalLayout = QHBoxLayout(self.buttonSpace)
-        self.button1 = QPushButton("Button 1", self.buttonSpace)
-        horizontalLayout.addWidget(self.button1)
+        horizontalLayout = QHBoxLayout(self._buttonSpace)
+        self._buttons["Button 1"] = QPushButton("Button 1", self._buttonSpace)
+        horizontalLayout.addWidget(self._buttons["Button 1"])
 
-        self.button2 = QPushButton("Button 2", self.buttonSpace)
-        horizontalLayout.addWidget(self.button2)
+        self._buttons["Button 2"] = QPushButton("Button 2", self._buttonSpace)
+        horizontalLayout.addWidget(self._buttons["Button 2"])
 
         widget.setCentralWidget(centralWidget)
 
+    def getButtons(self):
+        return self._buttons
 
 
 

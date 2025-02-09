@@ -1,15 +1,18 @@
 from typing import TYPE_CHECKING, Protocol
 
 from abc import ABC
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QPushButton
 
 if TYPE_CHECKING:
     from src.controller.Base import BaseController
 
 
 class UI(Protocol):
+    def getButtons(self):
+        ...
+
     def setupUi(self, widget: QWidget) -> None:
-        pass
+        ...
 
 
 class BaseView(ABC):

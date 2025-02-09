@@ -11,3 +11,13 @@ class MainWindowView(BaseView):
     def __init__(self) -> None:
         super().__init__(QMainWindow(), UiMainWindow())
         self.controller = MainController(self)
+        self.__bind()
+
+    def __bind(self):
+        buttons = self.ui.getButtons()
+
+        buttons["Button 1"].clicked.connect(lambda:print("aboba"))
+        buttons["Button 2"].clicked.connect(lambda:print("aboba"))
+
+    def render(self):
+        ...
