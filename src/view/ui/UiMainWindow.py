@@ -1,3 +1,4 @@
+from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QMainWindow, QGraphicsView, QSizePolicy, QWidget, QVBoxLayout, QPushButton, QHBoxLayout
 
 
@@ -35,9 +36,11 @@ class UiMainWindow(object):
 
         widget.setCentralWidget(centralWidget)
 
-    def getButtons(self):
+    def getButtons(self) -> dict[str, QPushButton]:
         return self._buttons
 
+    def getCanvasSize(self) -> QSize:
+        return self.graphicsView.size()
 
 
 

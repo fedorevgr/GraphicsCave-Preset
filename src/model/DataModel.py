@@ -7,24 +7,24 @@ STARTING_SIZE = (1200, 800)
 
 @dataclass
 class DataModel:
-    image: QImage
+    _image: QImage
 
     def __init__(self) -> None:
-        self.image = QImage(STARTING_SIZE[0], STARTING_SIZE[1], QImage.Format.Format_ARGB32)
+        self._image = QImage(STARTING_SIZE[0], STARTING_SIZE[1], QImage.Format.Format_ARGB32)
 
     def reset(self):
-        self.image.fill(QColor("transparent"))
+        self._image.fill(QColor("transparent"))
 
     def setSize(self, dimensions: QSize):
         if dimensions.width() != STARTING_SIZE[0] or dimensions.height() != STARTING_SIZE[1]:
-            self.image = QImage(dimensions, QImage.Format.Format_ARGB32)
+            self._image = QImage(dimensions, QImage.Format.Format_ARGB32)
 
-    def getImage(self, dimensions: QSize) -> QImage:
+    def draw(self, dimensions: QSize) -> None:
         self.setSize(dimensions)
 
         self.reset()
 
-        painter = QPainter(self.image)
+        painter = QPainter(self._image)
         brush = QBrush(QColor("red"))
         painter.setBrush(brush)
         pen = QPen(QColor("blue"))
@@ -32,4 +32,5 @@ class DataModel:
 
         painter.drawPolygon(QPolygon([QPoint(0, 0), QPoint(100, 60), QPoint(60, 100)]))
 
-        return self.image
+    def getImage(self) -> QImage:
+        return self._image

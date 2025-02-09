@@ -1,3 +1,6 @@
+from logging import log, DEBUG
+
+from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtWidgets import QMainWindow
 from src.controller.MainController import MainController
 from src.view.ui.UiMainWindow import UiMainWindow
@@ -19,5 +22,12 @@ class MainWindowView(BaseView):
         buttons["Button 1"].clicked.connect(lambda:print("aboba"))
         buttons["Button 2"].clicked.connect(lambda:print("aboba"))
 
-    def render(self):
-        ...
+    def render(self, image: QImage) -> None:
+        log(DEBUG, image)
+
+        pixmap = QPixmap.fromImage(image)
+        self.scene.addPixmap(pixmap)
+        self.scene.update()
+
+    def clear(self) -> None:
+        self.scene.clear()
