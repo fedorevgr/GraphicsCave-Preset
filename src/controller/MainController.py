@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from logging import log, DEBUG, INFO
+from logging import getLogger
 
 from src.controller.Base import BaseController
 from src.model.DataModel import DataModel
@@ -8,6 +8,7 @@ from src.model.DataModel import DataModel
 if TYPE_CHECKING:
     from src.view.MainWindow import MainWindowView
 
+log = getLogger(__name__)
 
 class MainController(BaseController):
     view: 'MainWindowView'
@@ -17,12 +18,12 @@ class MainController(BaseController):
         super().__init__(view, DataModel())
 
     def render(self) -> None:
-        log(DEBUG, f"Canvas size {self.view.getCanvasSize()}")
+        log.debug(f"Canvas size {self.view.getCanvasSize()}")
         self.model.draw(self.view.getCanvasSize())
         self.view.render(self.model.getImage())
 
     def clear(self) -> None:
-        log(INFO, "Clearing canvas")
+        log.info("Clearing canvas")
         self.view.clear()
 
     def unloadImage(self) -> None:

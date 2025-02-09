@@ -1,4 +1,4 @@
-from logging import log, DEBUG
+from logging import getLogger, info
 
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtWidgets import QMainWindow
@@ -6,6 +6,7 @@ from src.controller.MainController import MainController
 from src.view.ui.UiMainWindow import UiMainWindow
 from src.view.Base import BaseView
 
+log = getLogger(__name__)
 
 class MainWindowView(BaseView):
     controller: MainController
@@ -23,7 +24,7 @@ class MainWindowView(BaseView):
         buttons["Button 2"].clicked.connect(self.controller.clear)
 
     def render(self, image: QImage) -> None:
-        log(DEBUG, image)
+        log.info(f"Rendering image")
 
         pixmap = QPixmap.fromImage(image)
         self.scene.addPixmap(pixmap)
