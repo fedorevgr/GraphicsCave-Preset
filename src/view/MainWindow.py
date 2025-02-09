@@ -19,8 +19,8 @@ class MainWindowView(BaseView):
     def __bind(self):
         buttons = self.ui.getButtons()
 
-        buttons["Button 1"].clicked.connect(lambda:print("aboba"))
-        buttons["Button 2"].clicked.connect(lambda:print("aboba"))
+        buttons["Button 1"].clicked.connect(self.controller.render)
+        buttons["Button 2"].clicked.connect(self.controller.clear)
 
     def render(self, image: QImage) -> None:
         log(DEBUG, image)
