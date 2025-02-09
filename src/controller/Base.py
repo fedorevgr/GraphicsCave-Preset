@@ -4,13 +4,13 @@ from abc import ABC
 
 if TYPE_CHECKING:
     from src.view.Base import BaseView
-    from src.model.DataModel import DataModel
+    from src.model.Model import Model
 
 
 class BaseController(ABC):
     view: 'BaseView'
-    model: 'DataModel'
+    model: 'Model'
 
-    def __init__(self, view: 'BaseView', model: 'DataModel'):
+    def __init__(self, view: 'BaseView', model: 'Model'):
         self.view = view
         self.model = model

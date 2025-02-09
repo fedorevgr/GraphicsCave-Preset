@@ -3,19 +3,19 @@ from typing import TYPE_CHECKING
 from logging import getLogger
 
 from src.controller.Base import BaseController
-from src.model.DataModel import DataModel
+from src.model.Model import Model
 
 if TYPE_CHECKING:
-    from src.view.MainWindow import MainWindowView
+    from src.view.View import View
 
 log = getLogger(__name__)
 
-class MainController(BaseController):
-    view: 'MainWindowView'
-    model: DataModel
+class Controller(BaseController):
+    view: 'View'
+    model: Model
 
-    def __init__(self, view: 'MainWindowView') -> None:
-        super().__init__(view, DataModel())
+    def __init__(self, view: 'View') -> None:
+        super().__init__(view, Model())
 
     def render(self) -> None:
         log.debug(f"Canvas size {self.view.getCanvasSize()}")

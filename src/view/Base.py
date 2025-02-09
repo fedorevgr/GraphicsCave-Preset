@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from src.controller.Base import BaseController
 
 
-class UI(Protocol):
+class UIRepository(Protocol):
     graphicsView: QGraphicsView
 
     def getButtons(self) -> dict[str, QPushButton]:
@@ -26,10 +26,10 @@ class UI(Protocol):
 class BaseView(ABC):
     controller: 'BaseController'
     widget: QWidget
-    ui: UI
+    ui: UIRepository
     scene: QGraphicsScene
 
-    def __init__(self, widget: QWidget, ui: UI):
+    def __init__(self, widget: QWidget, ui: UIRepository):
         self.widget = widget
         self.ui = ui
         self.ui.setupUi(self.widget)

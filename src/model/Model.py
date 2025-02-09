@@ -6,7 +6,7 @@ from PySide6.QtGui import QImage, QColor, QPainter, QBrush, QPen, QPolygon
 STARTING_SIZE = (1200, 800)
 
 @dataclass
-class DataModel:
+class Model:
     _image: QImage
 
     def __init__(self) -> None:
